@@ -6,8 +6,8 @@ class User:
     self.age = age
     self.is_rewards_member = False
     self.gold_card_points = 0
-  # def __repr__(self):
-  #   return f"{self.first_name} {self.last_name} {self.email} {self.age}"
+  def display_info(self):
+    return f"{self.first_name} {self.last_name} {self.email} {self.age}"
 
   def enroll(self):
     self.is_rewards_member = True
@@ -32,3 +32,5 @@ print(user2.enroll())
 print(user2.spend_points())
 print(user1.enroll())
 print(user1.points())
+user1.enroll().points(80).display_info()
+user2.enroll().spend_points(50).display_info()
