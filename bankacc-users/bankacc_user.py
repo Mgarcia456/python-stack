@@ -35,9 +35,9 @@ class BankAccount:
         self.balance += (self.balance * self.int_rate)
         return self
 
-user1 = User('michael', 'mchoi@mchoi.com')
-user2 = User('jonathan', 'jonathan@jonathan.com')
-user3 = User('Francis', 'fran@google.com')
+user1 = User('miguel', 'mchoi@mchoi.com')
+user2 = User('john', 'jonathan@jonathan.com')
+user3 = User('kaija', 'fran@google.com')
 # account1 = BankAccount()
 # account2 = BankAccount()
 
