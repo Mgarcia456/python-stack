@@ -1,6 +1,6 @@
 class User:
-    def __init__(self, username, email):
-        self.name = username
+    def __init__(self, name, email):
+        self.name = name
         self.email = email
         self.account = BankAccount(0.02, 500)
     def withdraw(self, amount):
@@ -8,13 +8,14 @@ class User:
     def deposit(self, amount):
         self.account.balance += amount
     def display_user_balance(self):
-        print('Balance: ', self.account.balance)
+        print(f"Balance: ${self.account.balance} for {self.name}")
     def transfer_money(self,other,amount):
         self.account.balance -= amount
         other.account.balance += amount
+        print(f"{self.name} sent  ${self.account.balance} for {self.name}")
 
 class BankAccount:
-    def __init__(self, int_rate = 0.01, balance = 0):
+    def __init__(self, int_rate = 0.02, balance = 0):
         self.int_rate = int_rate
         self.balance = balance
     def deposit(self, amount):
@@ -37,8 +38,8 @@ class BankAccount:
 user1 = User('michael', 'mchoi@mchoi.com')
 user2 = User('jonathan', 'jonathan@jonathan.com')
 user3 = User('Francis', 'fran@google.com')
-account1 = BankAccount()
-account2 = BankAccount()
+# account1 = BankAccount()
+# account2 = BankAccount()
 
 
 user1.deposit(550)
@@ -63,6 +64,6 @@ user1.transfer_money(user3, 500)
 user1.display_user_balance()
 user3.display_user_balance()
 
-account1.deposit(500).deposit(200).deposit(150).withdraw(500).display_account_info().yield_interest().display_account_info()
+# account1.deposit(500).deposit(200).deposit(150).withdraw(500).display_account_info().yield_interest().display_account_info()
 
-account2.deposit(500).deposit(1500).withdraw(100).withdraw(200).withdraw(150).withdraw(50).yield_interest().display_account_info()
+# account2.deposit(500).deposit(1500).withdraw(100).withdraw(200).withdraw(150).withdraw(50).yield_interest().display_account_info()
