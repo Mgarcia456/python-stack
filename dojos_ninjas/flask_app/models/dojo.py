@@ -38,5 +38,5 @@ class Dojo:
                 'created_at': row['ninjas.created_at'],
                 'updated_at': row['ninjas.updated_at']
             }
-            dojo.ninjas.append( ninja(ninja_data) )
+            dojo.ninjas.append(ninja_data)
         return dojo
