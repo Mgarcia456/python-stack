@@ -5,10 +5,14 @@ from flask_app.models.recipe import Recipe
 #### create page rendering a template
 @app.route('/recipes/new')
 def new_recipe():
+    if 'user_id' not in session:
+        return redirect ("/")
     return render_template('recipe_new.html')
 ## create a recipe
 @app.route('/recipes/create',methods=['post'])
 def create_recipe():
+    if 'user_id' not in session:
+        return redirect ("/")
     print(request.form)
     if not Recipe.vaildator(request.form):
         return redirect('/recipes/new')
@@ -22,19 +26,25 @@ def create_recipe():
 #    show one
 @app.route('/recipes/<int:id>')
 def show_one_recipe(id):
+    if 'user_id' not in session:
+        return redirect ("/")
     recipe_data = {
-          'id' : id
+        'id' : id
     }
     this_recipe = Recipe.get_by_id(recipe_data)
     return render_template("recipe_show.html",this_recipe=this_recipe)
 #     edit page render
 @app.route('/recipes/<int:id>/edit')
 def edit_recipe(id):
+    if 'user_id' not in session:
+        return redirect ("/")
     this_recipe = Recipe.get_by_id({'id':id})
     return render_template('recipe_edit.html', this_recipe=this_recipe)
 #    edit page action
 @app.route('/recipes/<int:id>/update', methods=['post'])
 def update_recipe(id):
+    if 'user_id' not in session:
+        return redirect ("/")
     if not Recipe.vaildator(request.form):
         return redirect(f'/recipes/{id}/edit')
     
@@ -47,6 +57,8 @@ def update_recipe(id):
 ############   delete 
 @app.route('/recipes/<int:id>/delete')
 def delete(id):
+    if 'user_id' not in session:
+        return redirect ("/")
     
     Recipe.delete({'id' : id})
     return redirect("/dashboard")

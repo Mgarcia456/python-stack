@@ -19,7 +19,7 @@ class Recipe:
     def create(cLs,data):
         query = """
         INSERT INTO recipes (name, description, instructions, date, under_30, user_id) 
-        VALUES ('%(name)s', '%(description)s', '%(instructions)s', '%(date)s', '%(under_30)s', '%(user_id)s');
+        VALUES (%(name)s, %(description)s, %(instructions)s, %(date)s, %(under_30)s, %(user_id)s);
         """
         return connectToMySQL(DATABASE).query_db(query,data)
         ## read all           
@@ -70,7 +70,7 @@ class Recipe:
                     'id' : row['users.id'],
                     'created_at' : row['users.created_at'],
                     'updated_at' : row['updated_at']
-              }
+            }
             this_user = user.User(user_data)
             this_recipe.cook = this_user
             return this_recipe
