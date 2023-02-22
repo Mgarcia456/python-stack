@@ -37,7 +37,7 @@
               <a href="/recipes/{{one_recipe.id}}">view</a>
               {% if one_recipe.user_id == session['user_id']%}
               <a href="/recipes/{{one_recipe.id}}/edit">edit</a>
-              <a href="">delete</a>
+              <a href="/recipes/{{one_recipe.id}}/delete">delete</a>
               {% endif %}
             </td>
           </tr>
