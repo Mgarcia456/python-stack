@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>edit a recipe</title>
+</head>
+<body>
+    <div>
+      <h1>edit your own recipe!!</h1>
+      <a href="/dashboard">HOME</a>
+      <p></p>
+      <div>
+        {% with messages = get_flashed_messages() %}     <!-- declare a variable called messages -->
+          {% if messages %}                            <!-- check if there are any messages -->
+              {% for message in messages %}            <!-- loop through the messages -->
+                <p style="color: red">{{message}}</p>                   <!-- display each message in a paragraph tag -->
+              {% endfor %}
+          {% endif %}
+        {% endwith %}
+      </div>
+      <p></p>
+      logged in as user {{session.first_name}}
+      <form action="/recipes/{{this_recipe.id}}/update", method="post">
+        <div>
+          name:
+          <input name="name" value="{{this_recipe.name}}">
+        </div>
+        <div>
+          description:
+          <textarea name="description" cols="30" rows="4">{{this_recipe.decription}}</textarea>
+
+        </div>
+        <div>
+          instructions:
+          <textarea name="instructions" cols="30" rows="4">{{this_recipe.instructions}}</textarea>
+        </div>
+        <div>
+          date cooked/made:
+          <input type="date" name="date" value="{{this_recipe.date}}">
+        </div>
+        <div>
+          <p>under 30 min?</p>
+          TRUE:
+          <input type="radio" name="under_30" value="1"
+          {% if this_recipe.under_30 ==1 %}
+          checked
+          {% endif %}
+          >
+          FALSE:
+          <input type="radio" name="under_30" value="0"
+          {% if this_recipe.under_30 ==0 %}
+          checked
+          {% endif %}
+          >
+        </div>
+        <p></p>
+        <button>create a recipe</button>
+
+      </form>
+    </div>
+  
+</body>
+</html>

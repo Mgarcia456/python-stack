@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>welcome</title>
+</head>
+<body>
+    <h1>welcome user! {{logged_user.first_name}} with the id {{logged_user.id}}</h1>
+    <hr>
+    <a href="/logout">Logout</a>
+    <table>
+      <thead>
+        <tr>
+            <th>name</th>
+            <th>under_30</th>
+            <th>date</th>
+            <th>chef</th>
+            <th>actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for one_recipe in all_recipes%}
+          <tr>
+            <td>{{one_recipe.name}}</td>
+            <td>
+              {% if one_recipe.under_30 ==1 %}
+                yes
+              {%else%}
+                no 
+              {% endif %}
+            </td>
+            <td>{{one_recipe.date}}</td>
+            <td>{{one_recipe.cook.first_name}}</td>
+            <td>
+              <a href="/recipes/{{one_recipe.id}}">view</a>
+              {% if one_recipe.user_id == session['user_id']%}
+              <a href="/recipes/{{one_recipe.id}}/edit">edit</a>
+              <a href="">delete</a>
+              {% endif %}
+            </td>
+          </tr>
+          
+        {% endfor %}
+      </tbody>
+    </table>
+    <div>
+      <p>
+        <a href="/recipes/new">CREATE A RECIPE</a>
+      </p>
+    </div>
+  
+</body>
+</html>

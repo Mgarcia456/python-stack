@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>one rceipe</title>
+</head>
+<body>
+    <h1> this recipe {{this_recipe.name}}</h1>
+    <p>decription::::: {{this_recipe.decription}}</p>
+    <p>instructions:::{{this_recipe.instructions}}</p>
+    <p>under 30 minutes?
+      {% if this_recipe.under_30 == 1  %}
+      TRUE
+      {% else %}
+      FALSE
+      {% endif %}
+      {{this_recipe.under_30}}
+    </p>
+    <p>date cooked {{this_recipe.date}}</p>
+
+  
+</body>
+</html>
